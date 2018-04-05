@@ -1,14 +1,19 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      MBS quick searches
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <h3>Tilføj søgnig</h3>
+  <input placeholder="navn på quick search" [(ngModel)]="Navn" >
+  <input placeholder="URL" [(ngModel)]="Url">
+  <button (click)="AddSearch()">Tilføj</button>
+  http://login.tradenda.dk/embed/GetDataAsJson?searchId=b5f178e2-3e2d-4fbc-ac42-b377859fef7b
+  <hr>
+  <div id="grid">
+    <div *ngFor="let item of Searches" (click)="navigate(item)">{{item.Navn}}</div>
+  </div>
 </ion-content>

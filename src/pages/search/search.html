@@ -1,0 +1,29 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{navParams.data.Navn}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="mainGrid">
+    <div id="gridHeader">
+      <div *ngFor="let head of headers">{{head}}</div>
+    </div>
+    <div id="gridContent">
+        <div *ngFor="let row of info | searchFilter: focus : isAsc" class="cellHolder">
+          <div *ngFor="let cell of row.cells" (click)="selectFocus(cell, row.cells)">
+            {{cell}}
+          </div>
+        </div>
+    </div>
+  </div>
+</ion-content>

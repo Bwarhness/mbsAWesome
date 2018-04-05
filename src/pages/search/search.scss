@@ -1,0 +1,28 @@
+page-search {
+
+    #mainGrid {
+        background-color:green;
+        display: grid;
+        grid-gap: 20px;
+        grid-template-rows: 50px;
+        #gridHeader{
+            height: 100%;
+            border-bottom: 1px solid dashed;
+            font-size: 40px;
+            text-align: center;
+            display: grid;
+            grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+        }
+        #gridContent{
+            display: grid;
+            grid-auto-rows: 40px;
+            
+            .cellHolder{
+                display: grid;
+                grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+            text-align: center;
+                
+            }
+        }
+    }
+}

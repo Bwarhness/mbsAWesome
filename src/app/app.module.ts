@@ -6,22 +6,33 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-
+import { SearchPage } from '../pages/search/search';
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP } from '@ionic-native/http';
+import { CookieService } from 'ngx-cookie-service';
+import { SearchFilterPipe } from '../pipes/search-filter/search-filter';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SearchPage,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    SearchPage
+    
   ],
   providers: [
+    CookieService,
+    HTTP,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
