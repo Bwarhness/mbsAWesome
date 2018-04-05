@@ -1,0 +1,8 @@
+{
+  "name": "mbsElectron",
+  "app_id": "b7f60930",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
