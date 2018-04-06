@@ -37,7 +37,7 @@ isAsc:boolean = false;
     index++;
     if (this.focus == index)
     {
-      this.isAsc = true;
+      this.isAsc = !this.isAsc;
     }
     else{
       this.isAsc = false;
