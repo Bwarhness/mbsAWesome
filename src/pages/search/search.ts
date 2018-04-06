@@ -16,15 +16,23 @@ import { HTTP } from '@ionic-native/http';
   
 })
 export class SearchPage {
-param:any;
 info:any;
 headers:any;
 focus:any;
 isAsc:boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:HttpClient) {
     console.log(navParams.data)
-    this.param =  navParams.data;
-    this.http.get("https://cors-anywhere.herokuapp.com/" + this.navParams.data.Url).subscribe(
+    let urlParams = "";
+    if (navParams.data.Params !== undefined) {
+      
+      for (let index = 0; index < navParams.data.Params.length; index++) {
+
+        const element = navParams.data.Params[index];
+        urlParams += "&Params["+index+"].Param=" + element.Navn + "&Params["+index+"].Values[0]=" + element.Value;
+      }
+    }
+    let finalUrl = 
+    this.http.get("https://cors-anywhere.herokuapp.com/" + this.navParams.data.Url + urlParams).subscribe(
       (data:any) => {
         this.headers = data.header;
         this.info = data.body.rows;

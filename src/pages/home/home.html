@@ -11,9 +11,17 @@
   <input placeholder="navn på quick search" [(ngModel)]="Navn" >
   <input placeholder="URL" [(ngModel)]="Url">
   <button (click)="AddSearch()">Tilføj</button>
-  http://login.tradenda.dk/embed/GetDataAsJson?searchId=b5f178e2-3e2d-4fbc-ac42-b377859fef7b
+  <h5>params <button (click)="params.push({})">Tilføj</button></h5>
+  <div *ngFor="let item of params">
+    Navn <input [(ngModel)]="item.Navn">
+    Værdi <input  [(ngModel)]="item.Value">
+    <button (click)="removeFromArray(item)">Delete</button>
+  </div>
   <hr>
   <div id="grid">
-    <div *ngFor="let item of Searches" (click)="navigate(item)">{{item.Navn}}</div>
+    <div *ngFor="let item of Searches" (click)="navigate(item)">
+      <div (click)="RemoveSearch(item)" class="deleteSearch">X</div>
+      {{item.Navn}}
+    </div>
   </div>
 </ion-content>

@@ -11,6 +11,7 @@ export class HomePage {
   
 Navn;
 Url = "";
+params:any = [];
 Searches:any = [];
   constructor(public navCtrl: NavController, public cookieService:CookieService) {
     var res = window.localStorage.getItem('Searches')
@@ -33,7 +34,8 @@ Searches:any = [];
   AddSearch(){
     let data = {
       'Navn':this.Navn,
-      'Url':this.Url
+      'Url':this.Url,
+      'Params':this.params
     };
     this.Searches.push(data)
     window.localStorage.setItem("Searches", JSON.stringify(this.Searches));
@@ -41,5 +43,12 @@ Searches:any = [];
   navigate(search){
     
     this.navCtrl.push(SearchPage,search)
+  }
+  removeFromArray(deleteItem){
+    this.params = this.params.filter(item => item !== deleteItem);
+  }
+  RemoveSearch(deleteItem){
+    this.Searches = this.Searches.filter(item => item !== deleteItem);
+    window.localStorage.setItem("Searches", JSON.stringify(this.Searches));
   }
 }
